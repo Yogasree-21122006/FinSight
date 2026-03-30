@@ -8,55 +8,64 @@ Full-stack personal finance dashboard — **React + Vite** frontend, **Express +
 
 1. **Node.js** v18+ → https://nodejs.org
 2. **MongoDB Community Server** → https://www.mongodb.com/try/download/community
-3. **MongoDB Compass** (GUI) → https://www.mongodb.com/products/compass *(optional but recommended)*
+3. **MongoDB Compass** (GUI) → https://www.mongodb.com/products/compass
 
 ---
 
 ## Setup & Run
 
-### Step 1 — Extract the ZIP and open in VS Code
+### Step 1 — Extract & Open in VS Code
 
-```bash
-cd finsight-mongodb
-code .
+Extract the ZIP, open the `finsight-mongodb` folder in VS Code.
+
+---
+
+### Step 2 — Start MongoDB Server
+
+Open a new terminal (Command Prompt or PowerShell) and run:
+
+```
+"C:\Program Files\MongoDB\Server\8.2\bin\mongod.exe"
 ```
 
-### Step 2 — Configure Environment
+> Keep this terminal open while using the app. MongoDB must be running before you start the project.
 
-Inside the `server/` folder, create a file called `.env`:
+---
+
+### Step 3 — Configure Environment
+
+Inside the `server/` folder, create a file called `.env` and paste:
 
 ```
 MONGODB_URI=mongodb://localhost:27017/finsight
 PORT=5000
 ```
 
-> Make sure MongoDB is running on your machine before starting the app.
-> Open MongoDB Compass and connect to `mongodb://localhost:27017` to see your data visually.
+---
 
-### Step 3 — Install dependencies
+### Step 4 — Install Dependencies
 
-Open VS Code terminal:
+Open a new VS Code terminal and run these one by one:
 
 ```bash
-# Root
 npm install
-
-# Server
 cd server && npm install && cd ..
-
-# Client
 cd client && npm install && cd ..
 ```
 
-### Step 4 — Start the app
+---
+
+### Step 5 — Start the App
 
 ```bash
 npm run dev
 ```
 
-This runs both backend (port **5000**) and frontend (port **5173**) together.
+This starts both backend (port **5000**) and frontend (port **5173**) together.
 
-### Step 5 — Open in browser
+---
+
+### Step 6 — Open in Browser
 
 → **http://localhost:5173**
 
@@ -64,23 +73,29 @@ This runs both backend (port **5000**) and frontend (port **5173**) together.
 
 ## CSV Format
 
+Your CSV file must have these columns in this exact order:
+
 ```
 Date,Description,Category,Amount,Type
 2024-01-03,Monthly Salary,Income,5000,income
 2024-01-05,Rent Payment,Housing,1200,expense
 ```
 
-| Column | Values |
-|--------|--------|
+| Column | Description |
+|--------|-------------|
+| Date | Any date format (e.g. 2024-01-01) |
+| Description | Transaction label |
+| Category | Food, Housing, Transport, etc. |
+| Amount | Positive number |
 | Type | `income` or `expense` |
 
-Use the **Download Sample CSV** button on the Upload page to get a test file.
+> Use the **Download Sample CSV** button on the Upload page to get a ready-made test file.
 
 ---
 
 ## MongoDB Compass
 
-After uploading a CSV, open Compass → connect to `mongodb://localhost:27017` → browse the `finsight` database → `transactions` collection to see your data.
+After uploading a CSV, open Compass → connect to `mongodb://localhost:27017` → open the `finsight` database → `transactions` collection to view your data.
 
 ---
 
@@ -90,7 +105,8 @@ After uploading a CSV, open Compass → connect to `mongodb://localhost:27017` �
 finsight-mongodb/
 ├── server/
 │   ├── index.js
-│   ├── models/Transaction.js
+│   ├── models/
+│   │   └── Transaction.js
 │   └── routes/
 │       ├── transactions.js
 │       ├── analytics.js
@@ -109,3 +125,24 @@ finsight-mongodb/
 ├── .env.example
 └── package.json
 ```
+
+---
+
+## Tech Stack
+
+| Layer | Technology |
+|-------|------------|
+| Frontend | React 18, Vite, Tailwind CSS |
+| Charts | Recharts |
+| Routing | React Router v6 |
+| HTTP Client | Axios |
+| Backend | Node.js, Express |
+| Database | MongoDB + Mongoose |
+| File Upload | Multer |
+| CSV Parsing | csv-parse |
+
+---
+
+## Developer
+
+**Yoga Sree S**
